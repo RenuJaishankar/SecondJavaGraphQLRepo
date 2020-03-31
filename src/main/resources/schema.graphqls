@@ -1,0 +1,28 @@
+type Query{
+    bookById(id:ID): Book
+    posts: [Post!]
+    books: [Book!]
+}
+type Mutation{
+
+}
+type Post{
+id:ID
+date:String
+title:String
+body:String
+}
+type Book{
+  id:ID
+   name:String
+    pageCount:Int
+    author:Author
+}
+type Author{
+   id:ID
+   firstname:String
+    lastname:String
+}
+
+# This is a graphQL comment!
+# Cool, huh?
