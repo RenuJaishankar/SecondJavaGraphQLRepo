@@ -8,10 +8,13 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
 import java.text.SimpleDateFormat;
+import java.util.Date;
+
 
 @Component
 public class Runner implements CommandLineRunner {
 // this object allows me to format the Date object however I see
+
 SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
 @Autowired
     GraphQLDataFetchers graphQLDataFetchers;
