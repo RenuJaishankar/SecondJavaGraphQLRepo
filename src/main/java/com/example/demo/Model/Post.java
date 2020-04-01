@@ -4,7 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import java.util.Date;
+
 
 @Entity
 public class Post {
@@ -12,12 +12,12 @@ public class Post {
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     private int id;
 
-    private Date date;
+    private String date;
     private String title;
     private String body;
 
 
-    public Post(Date date, String title, String body) {
+    public Post(String date, String title, String body) {
         this.date = date;
         this.title = title;
         this.body = body;
@@ -29,11 +29,11 @@ public class Post {
     public int getId() {
         return id;
     }
-    public Date getDate() {
+    public String getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(String date) {
         this.date = date;
     }
 

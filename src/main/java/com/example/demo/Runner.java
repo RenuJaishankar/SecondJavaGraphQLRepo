@@ -22,9 +22,9 @@ SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
 PostRepo postRepo;
 @Override
 public void run(String... args) throws Exception{
-  postRepo.save(new Post(sdf.parse("2020/03/30"),"hello","fdffssdf"));
-    postRepo.save(new Post(sdf.parse("2020/03/30"),"new post","fdsdfgihk"));
-    postRepo.save(new Post(sdf.parse("2020/03/30"),"other rambling","32356rhsghjkl"));
+  postRepo.save(new Post(sdf.format(new Date()),"hello","fdffssdf"));
+    postRepo.save(new Post(sdf.format(new Date()),"new post","fdsdfgihk"));
+    postRepo.save(new Post(sdf.format(new Date()),"other rambling","32356rhsghjkl"));
 }
 
 }

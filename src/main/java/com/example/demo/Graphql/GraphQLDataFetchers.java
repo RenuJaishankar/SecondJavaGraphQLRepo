@@ -94,7 +94,7 @@ public class GraphQLDataFetchers {
     }
      public DataFetcher createPost(){
           return dataFetchingEnvironment -> {
-            Date date=dataFetchingEnvironment.getArgument("date");
+            String date=dataFetchingEnvironment.getArgument("date");
           String title=dataFetchingEnvironment.getArgument("title");
           String body=dataFetchingEnvironment.getArgument("body");
            Post newPost = new Post(date,title,body);
