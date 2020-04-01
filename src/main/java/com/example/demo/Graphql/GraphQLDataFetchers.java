@@ -4,7 +4,6 @@ import com.example.demo.Model.Post;
 import graphql.schema.DataFetcher;
 import com.example.demo.Repo.PostRepo;
 import com.google.common.collect.ImmutableMap;
-import org.graalvm.compiler.lir.CompositeValue;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
