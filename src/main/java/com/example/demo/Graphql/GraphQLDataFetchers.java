@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.Arrays;
+
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -79,16 +81,26 @@ public class GraphQLDataFetchers {
 
         };
     }
-    public DataFetcher getAuthorDataFetcher(){
-          return dataFetchingEnvironment -> {
-              Map<String,String>book = dataFetchingEnvironment.getSource();
-              String authorId = book.get("authorId");
-              return authors.
-                      stream()
-                      .filter(author->author.get("Id").equals(authorId))
-                      .findFirst()
-                      .orElse(null);
-          };
-
+    public DataFetcher getAuthorDataFetcher() {
+        return dataFetchingEnvironment -> {
+            Map<String, String> book = dataFetchingEnvironment.getSource();
+            String authorId = book.get("authorId");
+            return authors.
+                    stream()
+                    .filter(author -> author.get("Id").equals(authorId))
+                    .findFirst()
+                    .orElse(null);
+        };
     }
+     public DataFetcher createPost(){
+          return dataFetchingEnvironment -> {
+            Date date=dataFetchingEnvironment.getArgument("date");
+          String title=dataFetchingEnvironment.getArgument("title");
+          String body=dataFetchingEnvironment.getArgument("body");
+           Post newPost = new Post(date,title,body);
+           postRepo.save(newPost);
+           return newPost;
+          };
+      }
+
 }

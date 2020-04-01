@@ -13,13 +13,13 @@ public class Post {
     private int id;
 
     private Date date;
-    private String Title;
+    private String title;
     private String body;
 
 
     public Post(Date date, String title, String body) {
         this.date = date;
-        Title = title;
+        this.title = title;
         this.body = body;
     }
     public Post() {
@@ -38,11 +38,11 @@ public class Post {
     }
 
     public String getTitle() {
-        return Title;
+        return title;
     }
 
     public void setTitle(String title) {
-        Title = title;
+        this.title = title;
     }
 
     public String getBody() {

@@ -4,8 +4,9 @@ type Query{
     books: [Book!]
 }
 type Mutation{
-
+    createPost(date:String,Title:String,body:String):Post!
 }
+
 type Post{
 id:ID
 date:String
