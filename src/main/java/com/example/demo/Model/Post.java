@@ -11,6 +11,10 @@ public class Post {
 
     private String date;
     private String title;
+    //we need to change the way H2 handles our body field. We can do this using annotations. Above body add the
+    // following annotations: @Column(name = "body", columnDefinition="TEXT"). Here, we're defining a custom name for
+    // our SQL column and defining it. We want to use "TEXT" because the "TEXT" definition has an indefinite limit for
+    // an amount of characters. This is perfect for our blog!
     @Column(name = "body",columnDefinition="TEXT")
     private String body;
 

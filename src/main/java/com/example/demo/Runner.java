@@ -16,11 +16,16 @@ import java.util.Scanner;
 
 @Component
 public class Runner implements CommandLineRunner {
+    //ClassLoader is used to load classes into our program but it can handle resources as well. Specifically, it handles
+    // resources as a stream, ergo the method getResourceAsStream. We pass in our resource path into it as a string.
+    // The Scanners take in our streams as arguments, allowing us to later render the data. The default constructor
+    // simply allows us to have the class throw an error; this is necessary for our InputStreams to work.
     ClassLoader cl = this.getClass().getClassLoader();
     InputStream inputStreamOne = cl.getResourceAsStream("posts/first.txt");
     InputStream inputStreamTwo = cl.getResourceAsStream("posts/second.txt");
     InputStream inputStreamThree = cl.getResourceAsStream("posts/third.txt");
-
+    //This code allows our scanner to intrepet the content of our files as a string, and stops at the escaping
+    // character \\A, ending the stream.
     Scanner scannerOne = new Scanner(inputStreamOne);
     Scanner scannerTwo = new Scanner(inputStreamTwo);
     Scanner scannerThree = new Scanner(inputStreamThree);
@@ -39,6 +44,7 @@ String textTwo = scannerTwo.useDelimiter("\\A").next();
 String textThree = scannerThree.useDelimiter("\\A").next();
 @Override
 public void run(String... args) throws Exception{
+  //change the constructors for each new post so that it accepts our Strings that we defined in the previous step.
   postRepo.save(new Post(sdf.format(new Date()),"hello",textOne));
     postRepo.save(new Post(sdf.format(new Date()),"new post",textTwo));
     postRepo.save(new Post(sdf.format(new Date()),"other rambling",textThree));
