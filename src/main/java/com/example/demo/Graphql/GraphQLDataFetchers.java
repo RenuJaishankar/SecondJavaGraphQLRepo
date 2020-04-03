@@ -7,6 +7,7 @@ import com.google.common.collect.ImmutableMap;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.text.SimpleDateFormat;
 import java.util.Arrays;
 
 import java.util.Date;
@@ -94,10 +95,11 @@ public class GraphQLDataFetchers {
     }
      public DataFetcher createPost(){
           return dataFetchingEnvironment -> {
-            String date=dataFetchingEnvironment.getArgument("date");
-          String title=dataFetchingEnvironment.getArgument("title");
-          String body=dataFetchingEnvironment.getArgument("body");
-           Post newPost = new Post(date,title,body);
+              SimpleDateFormat sdf = new SimpleDateFormat("yyyy/mm/dd");
+              String postTitle=dataFetchingEnvironment.getArgument("title");
+          String postBody=dataFetchingEnvironment.getArgument("body");
+          //Note that we are not defining id or date as these values will be handled for us by our program.
+           Post newPost = new Post(sdf.format(new Date()),postTitle,postBody);
            postRepo.save(newPost);
            return newPost;
           };

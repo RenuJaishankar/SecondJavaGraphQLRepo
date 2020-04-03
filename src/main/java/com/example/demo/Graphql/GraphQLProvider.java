@@ -55,6 +55,9 @@ GraphQLDataFetchers graphQLDataFetchers;
                             .dataFetcher("authors", graphQLDataFetchers.getAuthorDataFetcher()))
                     .type(newTypeWiring("Query")
                             .dataFetcher("posts", graphQLDataFetchers.getPostsDataFetcher()))
+                    .type(newTypeWiring("Mutation")
+                            .dataFetcher("createPost",graphQLDataFetchers.createPost()))
+
                     .build();
         }
 

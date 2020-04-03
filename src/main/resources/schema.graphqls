@@ -4,7 +4,7 @@ type Query{
     books: [Book!]
 }
 type Mutation{
-    createPost(date:String,Title:String,body:String):Post!
+    createPost(date:String,title:String,body:String):Post!
 }
 
 type Post{
