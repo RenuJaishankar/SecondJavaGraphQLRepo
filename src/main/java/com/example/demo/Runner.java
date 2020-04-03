@@ -46,8 +46,8 @@ String textThree = scannerThree.useDelimiter("\\A").next();
 public void run(String... args) throws Exception{
   //change the constructors for each new post so that it accepts our Strings that we defined in the previous step.
   postRepo.save(new Post(sdf.format(new Date()),"Welcome to my blog",textOne));
-    postRepo.save(new Post(sdf.format(new Date()),"new post",textTwo));
-    postRepo.save(new Post(sdf.format(new Date()),"other rambling",textThree));
+    postRepo.save(new Post(sdf.format(new Date()),"Have a look at this awesome post",textTwo));
+    postRepo.save(new Post(sdf.format(new Date()),"My new post",textThree));
 }
 
 }
