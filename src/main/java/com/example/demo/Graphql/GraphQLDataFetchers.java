@@ -101,6 +101,9 @@ public class GraphQLDataFetchers {
           //Note that we are not defining id or date as these values will be handled for us by our program.
            Post newPost = new Post(sdf.format(new Date()),postTitle,postBody);
            postRepo.save(newPost);
+              posts = StreamSupport
+                      .stream(postRepo.findAll().spliterator(), false)
+                      .collect(Collectors.toList());
            return newPost;
           };
       }
