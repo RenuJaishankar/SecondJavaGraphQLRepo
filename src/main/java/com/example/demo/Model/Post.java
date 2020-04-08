@@ -4,6 +4,7 @@ import javax.persistence.*;
 
 
 @Entity
+@Table(name="posts")
 public class Post {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
@@ -54,8 +55,6 @@ public class Post {
     public void setBody(String body) {
         this.body = body;
     }
-
-
 
 
 }
