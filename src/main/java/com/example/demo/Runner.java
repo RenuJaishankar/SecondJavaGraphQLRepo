@@ -12,8 +12,7 @@ import java.io.InputStream;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Scanner;
-//This is a new comment
-@Component
+//@Component
 // commented because we add details through the front end post.
 public class Runner implements CommandLineRunner {
     //ClassLoader is used to load classes into our program but it can handle resources as well. Specifically, it handles
