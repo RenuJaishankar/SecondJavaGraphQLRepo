@@ -61,7 +61,14 @@ GraphQLDataFetchers graphQLDataFetchers;
                             .dataFetcher("createFlowerPost",graphQLDataFetchers.createFlowerPost()))
                      .type(newTypeWiring("Query")
                             .dataFetcher("flowerposts",graphQLDataFetchers.getFlowerPostsDataFetcher()))
-                    .build();
+                                    .type(newTypeWiring("Mutation")
+                                            .dataFetcher("createFruitPost",graphQLDataFetchers.createFruitPost()))
+                                    .type(newTypeWiring("Query")
+                                            .dataFetcher("fruitposts",graphQLDataFetchers.getFruitPostsDataFetcher()))
+
+
+
+                                    .build();
         }
 
 @Bean

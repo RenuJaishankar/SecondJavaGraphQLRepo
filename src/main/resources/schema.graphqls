@@ -6,7 +6,9 @@ type Query{
 }
 type Mutation{
     createPost(date:String,title:String,body:String):Post!
+#    this POST refers to type POST
     createFlowerPost(date:String,title:String,body:String):FlowerPost!
+    createFruitPost(date:String,title:String,body:String):FruitPost!
 }
 
 type Post{
@@ -16,6 +18,12 @@ title:String
 body:String
 }
 type FlowerPost{
+    id:ID
+    date:String
+    title:String
+    body:String
+}
+type FruitPost{
     id:ID
     date:String
     title:String
