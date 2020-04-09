@@ -1,6 +1,8 @@
 package com.example.demo.Graphql;
 
+import com.example.demo.Model.FlowerPost;
 import com.example.demo.Model.Post;
+import com.example.demo.Repo.FlowerpostRepo;
 import graphql.schema.DataFetcher;
 import com.example.demo.Repo.PostRepo;
 import com.google.common.collect.ImmutableMap;
@@ -23,6 +25,7 @@ import java.util.stream.StreamSupport;
 public class GraphQLDataFetchers {
     @Autowired
     PostRepo postRepo;
+    FlowerpostRepo flowerpostRepo;
     private static List<Map<String, String>> books = Arrays.asList(
             ImmutableMap.of("id", "book1",
                     "name", "Harry Potter and the Philosopher's Stone",
@@ -52,7 +55,7 @@ public class GraphQLDataFetchers {
 
     );
     private List<Post> posts;
-
+    private List<FlowerPost> flowerposts;
     public DataFetcher getPostsDataFetcher() {
         return dataFetchingEnvironment -> {
             posts = StreamSupport
@@ -61,6 +64,18 @@ public class GraphQLDataFetchers {
             return posts;
         };
     }
+
+    public DataFetcher getFlowerPostsDataFetcher() {
+        return dataFetchingEnvironment -> {
+           flowerposts = StreamSupport
+                   .stream(flowerpostRepo.findAll().spliterator(),false)
+                   .collect(Collectors.toList());
+             return flowerposts;
+        };
+
+    }
+
+
     public DataFetcher getBooksDataFetcher() {
         return dataFetchingEnvironment -> {
 
@@ -107,5 +122,24 @@ public class GraphQLDataFetchers {
            return newPost;
           };
       }
+     public DataFetcher createFlowerPost(){
+       return dataFetchingEnvironment -> {
+
+
+
+
+
+
+
+
+
+
+       } ;
+
+
+
+
+
+     }
 
 }

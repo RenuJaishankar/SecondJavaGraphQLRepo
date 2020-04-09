@@ -5,6 +5,7 @@ type Query{
 }
 type Mutation{
     createPost(date:String,title:String,body:String):Post!
+    createFlowerPost(date:String,title:String,body:String):FlowerPost!
 }
 
 type Post{
@@ -13,6 +14,13 @@ date:String
 title:String
 body:String
 }
+type FlowerPost{
+    id:ID
+    date:String
+    title:String
+    body:String
+}
+
 type Book{
   id:ID
    name:String
