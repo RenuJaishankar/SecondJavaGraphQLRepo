@@ -7,7 +7,7 @@ import javax.persistence.*;
 @Table(name="flowerposts")
 public class FlowerPost {
 @Id
-@GeneratedValue(strategy= GenerationType.IDENTITY)
+@GeneratedValue(strategy = GenerationType.IDENTITY)
 private int id;
 @Column(name="imageUrl",columnDefinition = "TEXT")
 private String imageUrl;

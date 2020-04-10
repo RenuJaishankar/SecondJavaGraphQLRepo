@@ -144,8 +144,8 @@ public class GraphQLDataFetchers {
            String flowerpostTitle=dataFetchingEnvironment.getArgument("title");
             String flowerpostBody=dataFetchingEnvironment.getArgument("body");
 
-            FlowerPost newFlowerPost = new FlowerPost(flowerpostImageUrl,sdf.format(new Date()),flowerpostTitle,
-                    flowerpostBody);
+            FlowerPost newFlowerPost = new FlowerPost(sdf.format(new Date()),flowerpostTitle,
+                    flowerpostBody, flowerpostImageUrl);
       //Note that we are not defining id or date as these values will be handled for us by our program.
       flowerpostRepo.save(newFlowerPost);
           flowerposts = StreamSupport
