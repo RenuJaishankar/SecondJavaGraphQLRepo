@@ -27,7 +27,9 @@ import java.util.stream.StreamSupport;
 public class GraphQLDataFetchers {
     @Autowired
     PostRepo postRepo;
+    @Autowired
     FlowerpostRepo flowerpostRepo;
+    @Autowired
     FruitpostRepo fruitpostRepo;
     private static List<Map<String, String>> books = Arrays.asList(
             ImmutableMap.of("id", "book1",

@@ -17,6 +17,7 @@ date:String
 title:String
 body:String
 }
+
 type FlowerPost{
     id:ID
     date:String
