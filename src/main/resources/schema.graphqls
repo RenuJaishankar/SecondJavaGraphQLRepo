@@ -3,6 +3,7 @@ type Query{
     posts: [Post!]
     books: [Book!]
     flowerposts: [FlowerPost!]
+    fruitposts: [FruitPost!]
 }
 type Mutation{
     createPost(date:String,title:String,body:String):Post!
