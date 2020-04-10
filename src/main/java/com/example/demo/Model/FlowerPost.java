@@ -9,14 +9,25 @@ public class FlowerPost {
 @Id
 @GeneratedValue(strategy= GenerationType.IDENTITY)
 private int id;
+private String imageUrl;
 private String date;
 private String title;
 private String body;
 
-    public FlowerPost(String date, String title, String body) {
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
+    }
+
+    public FlowerPost(String date, String title, String body, String imageUrl) {
         this.date = date;
         this.title = title;
         this.body = body;
+        this.imageUrl = imageUrl;
     }
 
     public FlowerPost() {

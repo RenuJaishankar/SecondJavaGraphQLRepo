@@ -139,10 +139,13 @@ public class GraphQLDataFetchers {
       }
      public DataFetcher createFlowerPost(){
        return dataFetchingEnvironment -> {
-      SimpleDateFormat sdf = new SimpleDateFormat("yyyy/mm/dd");
-      String flowerpostTitle=dataFetchingEnvironment.getArgument("title");
-      String flowerpostBody=dataFetchingEnvironment.getArgument("body");
-            FlowerPost newFlowerPost = new FlowerPost(sdf.format(new Date()),flowerpostTitle,flowerpostBody);
+           String flowerpostImageUrl=dataFetchingEnvironment.getArgument("imageUrl");
+           SimpleDateFormat sdf = new SimpleDateFormat("yyyy/mm/dd");
+           String flowerpostTitle=dataFetchingEnvironment.getArgument("title");
+            String flowerpostBody=dataFetchingEnvironment.getArgument("body");
+
+            FlowerPost newFlowerPost = new FlowerPost(flowerpostImageUrl,sdf.format(new Date()),flowerpostTitle,
+                    flowerpostBody);
       //Note that we are not defining id or date as these values will be handled for us by our program.
       flowerpostRepo.save(newFlowerPost);
           flowerposts = StreamSupport
