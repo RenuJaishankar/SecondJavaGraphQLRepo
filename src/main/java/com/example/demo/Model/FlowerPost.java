@@ -1,12 +1,10 @@
 package com.example.demo.Model;
 
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
+@Table(name="flowerposts")
 public class FlowerPost {
 @Id
 @GeneratedValue(strategy= GenerationType.IDENTITY)
