@@ -2,9 +2,11 @@ package com.example.demo.Graphql;
 
 import com.example.demo.Model.FlowerPost;
 import com.example.demo.Model.FruitPost;
+import com.example.demo.Model.PlacePost;
 import com.example.demo.Model.Post;
 import com.example.demo.Repo.FlowerpostRepo;
 import com.example.demo.Repo.FruitpostRepo;
+import com.example.demo.Repo.PlacepostRepo;
 import graphql.schema.DataFetcher;
 import com.example.demo.Repo.PostRepo;
 import com.google.common.collect.ImmutableMap;
@@ -31,6 +33,8 @@ public class GraphQLDataFetchers {
     FlowerpostRepo flowerpostRepo;
     @Autowired
     FruitpostRepo fruitpostRepo;
+    @Autowired
+    PlacepostRepo placepostRepo;
     private static List<Map<String, String>> books = Arrays.asList(
             ImmutableMap.of("id", "book1",
                     "name", "Harry Potter and the Philosopher's Stone",
@@ -61,6 +65,7 @@ public class GraphQLDataFetchers {
     );
     private List<Post> posts;
     private List<FlowerPost> flowerposts;
+    private List<PlacePost>  placeposts;
     private List<FruitPost> fruitposts;
     public DataFetcher getPostsDataFetcher() {
         return dataFetchingEnvironment -> {
@@ -80,6 +85,17 @@ public class GraphQLDataFetchers {
         };
 
     }
+    public DataFetcher getPlacePostsDataFetcher() {
+        return dataFetchingEnvironment -> {
+            placeposts = StreamSupport
+                    .stream(placepostRepo.findAll().spliterator(),false)
+                    .collect(Collectors.toList());
+            return placeposts;
+        };
+
+    }
+
+
     public DataFetcher getFruitPostsDataFetcher() {
         return dataFetchingEnvironment -> {
             fruitposts = StreamSupport
@@ -154,6 +170,23 @@ public class GraphQLDataFetchers {
           return newFlowerPost;
        } ;
      }
+    public DataFetcher createPlacePost(){
+        return dataFetchingEnvironment -> {
+            String placepostImageUrl=dataFetchingEnvironment.getArgument("imageUrl");
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy/mm/dd");
+            String placepostTitle=dataFetchingEnvironment.getArgument("title");
+            String placepostBody=dataFetchingEnvironment.getArgument("body");
+
+            PlacePost newPlacePost = new PlacePost(sdf.format(new Date()),placepostTitle,
+                    placepostBody, placepostImageUrl);
+            //Note that we are not defining id or date as these values will be handled for us by our program.
+            placepostRepo.save(newPlacePost);
+            placeposts = StreamSupport
+                    .stream(placepostRepo.findAll().spliterator(),false)
+                    .collect(Collectors.toList());
+            return newPlacePost;
+        } ;
+    }
 
     public DataFetcher createFruitPost(){
         return dataFetchingEnvironment -> {
