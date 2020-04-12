@@ -10,7 +10,7 @@ type Mutation{
     createPost(date:String,title:String,body:String):Post!
 #    this POST refers to type POST
     createFlowerPost(date:String,title:String,body:String,imageUrl:String):FlowerPost!
-    createPlacePost(date:String,title:String,body:String,imageUrl:String):FlowerPost!
+    createPlacePost(date:String,title:String,body:String,imageUrl:String):PlacePost!
     createFruitPost(date:String,title:String,body:String):FruitPost!
 }
 
