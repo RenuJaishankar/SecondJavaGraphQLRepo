@@ -193,7 +193,8 @@ public class GraphQLDataFetchers {
             SimpleDateFormat sdf = new SimpleDateFormat("yyyy/mm/dd");
             String fruitpostTitle=dataFetchingEnvironment.getArgument("title");
             String fruitpostBody=dataFetchingEnvironment.getArgument("body");
-            FruitPost newFruitPost = new FruitPost(sdf.format(new Date()),fruitpostTitle,fruitpostBody);
+            String fruitpostImageUrl=dataFetchingEnvironment.getArgument("imageUrl");
+            FruitPost newFruitPost = new FruitPost(sdf.format(new Date()),fruitpostTitle,fruitpostBody,fruitpostImageUrl);
             //Note that we are not defining id or date as these values will be handled for us by our program.
             fruitpostRepo.save(newFruitPost);
             fruitposts = StreamSupport

@@ -8,14 +8,24 @@ import javax.persistence.*;
 public class FruitPost {
 @Id
 @GeneratedValue (strategy = GenerationType.IDENTITY)
-private int id;
-private String date;
-private String title;
-private String body;
+   private int id;
+    @Column(name="imageUrl",columnDefinition = "TEXT")
+    private String imageUrl;
+
+    private String date;
+    private String title;
+   private String body;
 
    public int getId(){
        return id;
    }
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
+    }
     public String getDate() {
         return date;
     }
@@ -43,9 +53,10 @@ private String body;
     public FruitPost() {
     }
 
-    public FruitPost(String date, String title, String body) {
+    public FruitPost(String date, String title, String body,String imageUrl) {
         this.date = date;
         this.title = title;
         this.body = body;
+        this.imageUrl = imageUrl;
     }
 }
