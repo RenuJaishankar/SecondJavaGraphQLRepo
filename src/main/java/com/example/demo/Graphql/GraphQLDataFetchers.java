@@ -141,11 +141,12 @@ public class GraphQLDataFetchers {
     }
      public DataFetcher createPost(){
           return dataFetchingEnvironment -> {
+              String postImageUrl=dataFetchingEnvironment.getArgument("imageUrl");
               SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
               String postTitle=dataFetchingEnvironment.getArgument("title");
           String postBody=dataFetchingEnvironment.getArgument("body");
           //Note that we are not defining id or date as these values will be handled for us by our program.
-           Post newPost = new Post(sdf.format(new Date()),postTitle,postBody);
+           Post newPost = new Post(sdf.format(new Date()),postTitle,postBody,postImageUrl);
            postRepo.save(newPost);
               posts = StreamSupport
                       .stream(postRepo.findAll().spliterator(), false)

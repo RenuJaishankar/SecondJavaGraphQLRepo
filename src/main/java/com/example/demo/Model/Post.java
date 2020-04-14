@@ -9,7 +9,8 @@ public class Post {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     private int id;
-
+    @Column(name="imageUrl",columnDefinition = "TEXT")
+    private String imageUrl;
     private String date;
     private String title;
     //we need to change the way H2 handles our body field. We can do this using annotations. Above body add the
@@ -20,7 +21,8 @@ public class Post {
     private String body;
 
 
-    public Post(String date, String title, String body) {
+    public Post(String date, String title, String body,String imageUrl) {
+        this.imageUrl = imageUrl;
         this.date = date;
         this.title = title;
         this.body = body;
@@ -31,6 +33,13 @@ public class Post {
 
     public int getId() {
         return id;
+    }
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
     }
     public String getDate() {
         return date;

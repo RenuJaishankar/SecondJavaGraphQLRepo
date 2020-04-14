@@ -7,7 +7,7 @@ type Query{
     placeposts: [PlacePost!]
 }
 type Mutation{
-    createPost(date:String,title:String,body:String):Post!
+    createPost(date:String,title:String,body:String,imageUrl:String):Post!
 #    this POST refers to type POST
     createFlowerPost(date:String,title:String,body:String,imageUrl:String):FlowerPost!
     createPlacePost(date:String,title:String,body:String,imageUrl:String):PlacePost!
@@ -15,10 +15,11 @@ type Mutation{
 }
 
 type Post{
-id:ID
-date:String
-title:String
-body:String
+    id:ID
+    imageUrl:String
+     date:String
+     title:String
+     body:String
 }
 
 type FlowerPost{
