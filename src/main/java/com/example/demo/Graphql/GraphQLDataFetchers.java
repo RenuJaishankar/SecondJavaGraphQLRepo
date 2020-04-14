@@ -141,7 +141,7 @@ public class GraphQLDataFetchers {
     }
      public DataFetcher createPost(){
           return dataFetchingEnvironment -> {
-              SimpleDateFormat sdf = new SimpleDateFormat("yyyy/mm/dd");
+              SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
               String postTitle=dataFetchingEnvironment.getArgument("title");
           String postBody=dataFetchingEnvironment.getArgument("body");
           //Note that we are not defining id or date as these values will be handled for us by our program.
@@ -156,7 +156,7 @@ public class GraphQLDataFetchers {
      public DataFetcher createFlowerPost(){
        return dataFetchingEnvironment -> {
            String flowerpostImageUrl=dataFetchingEnvironment.getArgument("imageUrl");
-           SimpleDateFormat sdf = new SimpleDateFormat("yyyy/mm/dd");
+           SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
            String flowerpostTitle=dataFetchingEnvironment.getArgument("title");
             String flowerpostBody=dataFetchingEnvironment.getArgument("body");
 
@@ -173,7 +173,7 @@ public class GraphQLDataFetchers {
     public DataFetcher createPlacePost(){
         return dataFetchingEnvironment -> {
             String placepostImageUrl=dataFetchingEnvironment.getArgument("imageUrl");
-            SimpleDateFormat sdf = new SimpleDateFormat("yyyy/mm/dd");
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
             String placepostTitle=dataFetchingEnvironment.getArgument("title");
             String placepostBody=dataFetchingEnvironment.getArgument("body");
 
@@ -190,7 +190,7 @@ public class GraphQLDataFetchers {
 
     public DataFetcher createFruitPost(){
         return dataFetchingEnvironment -> {
-            SimpleDateFormat sdf = new SimpleDateFormat("yyyy/mm/dd");
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
             String fruitpostTitle=dataFetchingEnvironment.getArgument("title");
             String fruitpostBody=dataFetchingEnvironment.getArgument("body");
             String fruitpostImageUrl=dataFetchingEnvironment.getArgument("imageUrl");
