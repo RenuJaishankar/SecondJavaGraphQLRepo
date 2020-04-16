@@ -11,6 +11,9 @@ import graphql.schema.DataFetcher;
 import com.example.demo.Repo.PostRepo;
 import com.google.common.collect.ImmutableMap;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Component;
 
 import java.text.SimpleDateFormat;
@@ -138,6 +141,15 @@ public class GraphQLDataFetchers {
                     .findFirst()
                     .orElse(null);
         };
+    }
+    public DataFetcher getPagedPostsDataFetcher()  {
+         return dataFetchingEnvironment -> {
+            int pageNumber = dataFetchingEnvironment.getArgument("pageNumber");
+            int pageSize = dataFetchingEnvironment.getArgument("pageSize");
+             Pageable firstPageWithTwoElements = PageRequest.of(pageNumber, pageSize);
+             Page<Post> allposts = postRepo.findAll(firstPageWithTwoElements);
+              return allposts;
+         };
     }
      public DataFetcher createPost(){
           return dataFetchingEnvironment -> {
