@@ -151,6 +151,18 @@ public class GraphQLDataFetchers {
               return allposts;
          };
     }
+
+    public DataFetcher getTotalPages(){
+        return dataFetchingEnvironment -> {
+            int pageNumber = dataFetchingEnvironment.getArgument("pageNumber");
+            int pageSize = dataFetchingEnvironment.getArgument("pageSize");
+            Pageable pageRequest = PageRequest.of(pageNumber, pageSize);
+            Page<Post> allPosts = postRepo.findAll(pageRequest);
+            return allPosts.getTotalPages();
+        };
+    }
+
+
      public DataFetcher createPost(){
           return dataFetchingEnvironment -> {
               String postImageUrl=dataFetchingEnvironment.getArgument("imageUrl");
