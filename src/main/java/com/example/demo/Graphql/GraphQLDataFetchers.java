@@ -14,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Component;
 
 import java.text.SimpleDateFormat;
@@ -146,8 +147,9 @@ public class GraphQLDataFetchers {
          return dataFetchingEnvironment -> {
             int pageNumber = dataFetchingEnvironment.getArgument("pageNumber");
             int pageSize = dataFetchingEnvironment.getArgument("pageSize");
-             Pageable firstPageWithTwoElements = PageRequest.of(pageNumber, pageSize);
-             Page<Post> allposts = postRepo.findAll(firstPageWithTwoElements);
+             Pageable pageRequest = PageRequest.of(pageNumber, pageSize, Sort.by("date").descending());
+         //    Pageable firstPageWithTwoElements = PageRequest.of(pageNumber, pageSize);
+             Page<Post> allposts = postRepo.findAll(pageRequest);
               return allposts;
          };
     }
