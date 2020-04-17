@@ -147,7 +147,7 @@ public class GraphQLDataFetchers {
          return dataFetchingEnvironment -> {
             int pageNumber = dataFetchingEnvironment.getArgument("pageNumber");
             int pageSize = dataFetchingEnvironment.getArgument("pageSize");
-             Pageable pageRequest = PageRequest.of(pageNumber, pageSize, Sort.by("date").descending());
+             Pageable pageRequest = PageRequest.of(pageNumber, pageSize, Sort.by("id").descending());
          //    Pageable firstPageWithTwoElements = PageRequest.of(pageNumber, pageSize);
              Page<Post> allposts = postRepo.findAll(pageRequest);
               return allposts;
