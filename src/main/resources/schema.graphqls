@@ -7,6 +7,8 @@ type Query{
     placeposts: [PlacePost!]
     allposts(pageNumber:Int, pageSize:Int):[Post!]
     getTotalPages(pageNumber:Int, pageSize:Int): Int
+    allplaceposts(pageNumber:Int, pageSize:Int):[PlacePost!]
+    getPlacesTotalPages(pageNumber:Int, pageSize:Int): Int
 }
 type Mutation{
     createPost(date:String,title:String,body:String,imageUrl:String):Post!
