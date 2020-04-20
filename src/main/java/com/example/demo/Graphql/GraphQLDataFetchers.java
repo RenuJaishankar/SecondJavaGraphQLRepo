@@ -150,6 +150,7 @@ public class GraphQLDataFetchers {
              Pageable pageRequest = PageRequest.of(pageNumber, pageSize, Sort.by("id").descending());
          //    Pageable firstPageWithTwoElements = PageRequest.of(pageNumber, pageSize);
              Page<Post> allposts = postRepo.findAll(pageRequest);
+             System.out.println(allposts);
               return allposts;
          };
     }
@@ -164,26 +165,27 @@ public class GraphQLDataFetchers {
         };
     }
 
-//    public DataFetcher getPagedPlacesPostsDataFetcher()  {
-//        return dataFetchingEnvironment -> {
-//            int pageNumber = dataFetchingEnvironment.getArgument("pageNumber");
-//            int pageSize = dataFetchingEnvironment.getArgument("pageSize");
-//            Pageable pageRequest = PageRequest.of(pageNumber, pageSize, Sort.by("id").descending());
-//            //    Pageable firstPageWithTwoElements = PageRequest.of(pageNumber, pageSize);
-//            Page<PlacePost> allplaceposts = placepostRepo.findAll(pageRequest);
-//            return allplaceposts;
-//        };
-//    }
-//
-//    public DataFetcher getPlacesTotalPages(){
-//        return dataFetchingEnvironment -> {
-//            int pageNumber = dataFetchingEnvironment.getArgument("pageNumber");
-//            int pageSize = dataFetchingEnvironment.getArgument("pageSize");
-//            Pageable pageRequest = PageRequest.of(pageNumber, pageSize);
-//            Page<PlacePost> allPlacePosts = placepostRepo.findAll(pageRequest);
-//            return allPlacePosts.getTotalPages();
-//        };
-//    }
+    public DataFetcher getPagedPlacesPostsDataFetcher()  {
+        return dataFetchingEnvironment -> {
+            int pageNumber = dataFetchingEnvironment.getArgument("pageNumber");
+            int pageSize = dataFetchingEnvironment.getArgument("pageSize");
+            Pageable pageRequest = PageRequest.of(pageNumber, pageSize, Sort.by("id").descending());
+            //    Pageable firstPageWithTwoElements = PageRequest.of(pageNumber, pageSize);
+            Page<PlacePost> allplaceposts = placepostRepo.findAll(pageRequest);
+            System.out.println(allplaceposts);
+            return allplaceposts;
+        };
+    }
+
+    public DataFetcher getPlacesTotalPages(){
+        return dataFetchingEnvironment -> {
+            int pageNumber = dataFetchingEnvironment.getArgument("pageNumber");
+            int pageSize = dataFetchingEnvironment.getArgument("pageSize");
+            Pageable pageRequest = PageRequest.of(pageNumber, pageSize);
+            Page<PlacePost> allPlacePosts = placepostRepo.findAll(pageRequest);
+            return allPlacePosts.getTotalPages();
+        };
+    }
 
 
      public DataFetcher createPost(){

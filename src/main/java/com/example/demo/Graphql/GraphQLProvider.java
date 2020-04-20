@@ -73,10 +73,10 @@ GraphQLDataFetchers graphQLDataFetchers;
                                             .dataFetcher("allposts",graphQLDataFetchers.getPagedPostsDataFetcher()))
                                     .type(newTypeWiring("Query")
                                             .dataFetcher("getTotalPages",graphQLDataFetchers.getTotalPages()))
-//                                    .type(newTypeWiring("Query")
-//                                            .dataFetcher("allplaceposts",graphQLDataFetchers.getPagedPlacesPostsDataFetcher()))
-//                                    .type(newTypeWiring("Query")
-//                                            .dataFetcher("getPlacesTotalPages",graphQLDataFetchers.getPlacesTotalPages()))
+                                    .type(newTypeWiring("Query")
+                                            .dataFetcher("allplaceposts",graphQLDataFetchers.getPagedPlacesPostsDataFetcher()))
+                                    .type(newTypeWiring("Query")
+                                            .dataFetcher("getPlacesTotalPages",graphQLDataFetchers.getPlacesTotalPages()))
 
                                     .build();
         }
