@@ -77,6 +77,10 @@ GraphQLDataFetchers graphQLDataFetchers;
                                             .dataFetcher("allplaceposts",graphQLDataFetchers.getPagedPlacesPostsDataFetcher()))
                                     .type(newTypeWiring("Query")
                                             .dataFetcher("getPlacesTotalPages",graphQLDataFetchers.getPlacesTotalPages()))
+                                    .type(newTypeWiring("Query")
+                                            .dataFetcher("allflowerposts",graphQLDataFetchers.getPagedFlowersPostsDataFetcher()))
+                                    .type(newTypeWiring("Query")
+                                            .dataFetcher("getFlowersTotalPages",graphQLDataFetchers.getFlowersTotalPages()))
 
                                     .build();
         }

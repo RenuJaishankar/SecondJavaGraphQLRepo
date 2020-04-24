@@ -165,6 +165,27 @@ public class GraphQLDataFetchers {
         };
     }
 
+    public DataFetcher getPagedFlowersPostsDataFetcher()  {
+        return dataFetchingEnvironment -> {
+            int pageNumber = dataFetchingEnvironment.getArgument("pageNumber");
+            int pageSize = dataFetchingEnvironment.getArgument("pageSize");
+            Pageable pageRequest = PageRequest.of(pageNumber, pageSize, Sort.by("id").descending());
+            //    Pageable firstPageWithTwoElements = PageRequest.of(pageNumber, pageSize);
+            Page<FlowerPost> allflowerposts = flowerpostRepo.findAll(pageRequest);
+            System.out.println(allflowerposts);
+            return allflowerposts;
+        };
+    }
+    public DataFetcher getFlowersTotalPages(){
+        return dataFetchingEnvironment -> {
+            int pageNumber = dataFetchingEnvironment.getArgument("pageNumber");
+            int pageSize = dataFetchingEnvironment.getArgument("pageSize");
+            Pageable pageRequest = PageRequest.of(pageNumber, pageSize);
+            Page<FlowerPost> allflowerPosts = flowerpostRepo.findAll(pageRequest);
+            return allflowerPosts.getTotalPages();
+        };
+    }
+
     public DataFetcher getPagedPlacesPostsDataFetcher()  {
         return dataFetchingEnvironment -> {
             int pageNumber = dataFetchingEnvironment.getArgument("pageNumber");
