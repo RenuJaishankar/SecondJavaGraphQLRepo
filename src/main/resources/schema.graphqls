@@ -12,7 +12,7 @@ type Query{
     allflowerposts(pageNumber:Int,pageSize:Int):[FlowerPost!]
     getFlowersTotalPages(pageNumber:Int,pageSize:Int):Int
     allfruitposts(pageNumber:Int,pageSize:Int):[FruitPost!]
-    getFruitsTotalPages(pageNUmber:Int,pageSize:Int):Int
+    getFruitsTotalPages(pageNumber:Int,pageSize:Int):Int
 }
 type Mutation{
     createPost(date:String,title:String,body:String,imageUrl:String):Post!
