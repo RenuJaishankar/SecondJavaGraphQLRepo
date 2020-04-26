@@ -81,6 +81,10 @@ GraphQLDataFetchers graphQLDataFetchers;
                                             .dataFetcher("allflowerposts",graphQLDataFetchers.getPagedFlowersPostsDataFetcher()))
                                     .type(newTypeWiring("Query")
                                             .dataFetcher("getFlowersTotalPages",graphQLDataFetchers.getFlowersTotalPages()))
+                                    .type(newTypeWiring("Query")
+                                            .dataFetcher("allfruitposts",graphQLDataFetchers.getPagedFruitsPostsDataFetcher()))
+                                    .type(newTypeWiring("Query")
+                                            .dataFetcher("getFruitsTotalPages",graphQLDataFetchers.getFruitsTotalPages()))
 
                                     .build();
         }
